@@ -10,6 +10,7 @@ async function bootstrap() {
     origin: '*', // Teste com '*' para garantir que o problema é aqui
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
+    allowedHeaders: 'Content-Type, Accept, Authorization, X-Requested-With',
   });
   await app.listen(process.env.PORT || 3000, '0.0.0.0');
 }
