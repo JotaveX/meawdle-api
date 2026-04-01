@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "buildCommand": "npx prisma generate && npx nest build",
+  "outputDirectory": ".",
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "dist/**"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ]
+}
