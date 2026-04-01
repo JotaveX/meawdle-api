@@ -8,9 +8,10 @@ datasource db {
 }
 
 model Cats {
-  id          Int    @id @default(autoincrement())
-  nome        String @unique
+  id          Int       @id @default(autoincrement())
+  nome        String    @unique
   url_imagem  String
   char_numero Int
-  url_adocao String
+  url_adocao  String
+  data_jogo   DateTime? @unique
 }

@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
 import { PrismaService } from './prisma/prisma.service';
 import { PrismaModule } from './prisma/prisma.module';
+import { ScrapingModule } from './scraping/scraping.module';
 
 @Module({
-  imports: [CatsModule, PrismaModule],
+  imports: [CatsModule, PrismaModule, ScrapingModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })

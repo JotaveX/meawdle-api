@@ -42,6 +42,7 @@ export type CatsMinAggregateOutputType = {
   url_imagem: string | null
   char_numero: number | null
   url_adocao: string | null
+  data_jogo: Date | null
 }
 
 export type CatsMaxAggregateOutputType = {
@@ -50,6 +51,7 @@ export type CatsMaxAggregateOutputType = {
   url_imagem: string | null
   char_numero: number | null
   url_adocao: string | null
+  data_jogo: Date | null
 }
 
 export type CatsCountAggregateOutputType = {
@@ -58,6 +60,7 @@ export type CatsCountAggregateOutputType = {
   url_imagem: number
   char_numero: number
   url_adocao: number
+  data_jogo: number
   _all: number
 }
 
@@ -78,6 +81,7 @@ export type CatsMinAggregateInputType = {
   url_imagem?: true
   char_numero?: true
   url_adocao?: true
+  data_jogo?: true
 }
 
 export type CatsMaxAggregateInputType = {
@@ -86,6 +90,7 @@ export type CatsMaxAggregateInputType = {
   url_imagem?: true
   char_numero?: true
   url_adocao?: true
+  data_jogo?: true
 }
 
 export type CatsCountAggregateInputType = {
@@ -94,6 +99,7 @@ export type CatsCountAggregateInputType = {
   url_imagem?: true
   char_numero?: true
   url_adocao?: true
+  data_jogo?: true
   _all?: true
 }
 
@@ -189,6 +195,7 @@ export type CatsGroupByOutputType = {
   url_imagem: string
   char_numero: number
   url_adocao: string
+  data_jogo: Date | null
   _count: CatsCountAggregateOutputType | null
   _avg: CatsAvgAggregateOutputType | null
   _sum: CatsSumAggregateOutputType | null
@@ -220,6 +227,7 @@ export type CatsWhereInput = {
   url_imagem?: Prisma.StringFilter<"Cats"> | string
   char_numero?: Prisma.IntFilter<"Cats"> | number
   url_adocao?: Prisma.StringFilter<"Cats"> | string
+  data_jogo?: Prisma.DateTimeNullableFilter<"Cats"> | Date | string | null
 }
 
 export type CatsOrderByWithRelationInput = {
@@ -228,18 +236,20 @@ export type CatsOrderByWithRelationInput = {
   url_imagem?: Prisma.SortOrder
   char_numero?: Prisma.SortOrder
   url_adocao?: Prisma.SortOrder
+  data_jogo?: Prisma.SortOrderInput | Prisma.SortOrder
 }
 
 export type CatsWhereUniqueInput = Prisma.AtLeast<{
   id?: number
   nome?: string
+  data_jogo?: Date | string
   AND?: Prisma.CatsWhereInput | Prisma.CatsWhereInput[]
   OR?: Prisma.CatsWhereInput[]
   NOT?: Prisma.CatsWhereInput | Prisma.CatsWhereInput[]
   url_imagem?: Prisma.StringFilter<"Cats"> | string
   char_numero?: Prisma.IntFilter<"Cats"> | number
   url_adocao?: Prisma.StringFilter<"Cats"> | string
-}, "id" | "nome">
+}, "id" | "nome" | "data_jogo">
 
 export type CatsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -247,6 +257,7 @@ export type CatsOrderByWithAggregationInput = {
   url_imagem?: Prisma.SortOrder
   char_numero?: Prisma.SortOrder
   url_adocao?: Prisma.SortOrder
+  data_jogo?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.CatsCountOrderByAggregateInput
   _avg?: Prisma.CatsAvgOrderByAggregateInput
   _max?: Prisma.CatsMaxOrderByAggregateInput
@@ -263,6 +274,7 @@ export type CatsScalarWhereWithAggregatesInput = {
   url_imagem?: Prisma.StringWithAggregatesFilter<"Cats"> | string
   char_numero?: Prisma.IntWithAggregatesFilter<"Cats"> | number
   url_adocao?: Prisma.StringWithAggregatesFilter<"Cats"> | string
+  data_jogo?: Prisma.DateTimeNullableWithAggregatesFilter<"Cats"> | Date | string | null
 }
 
 export type CatsCreateInput = {
@@ -270,6 +282,7 @@ export type CatsCreateInput = {
   url_imagem: string
   char_numero: number
   url_adocao: string
+  data_jogo?: Date | string | null
 }
 
 export type CatsUncheckedCreateInput = {
@@ -278,6 +291,7 @@ export type CatsUncheckedCreateInput = {
   url_imagem: string
   char_numero: number
   url_adocao: string
+  data_jogo?: Date | string | null
 }
 
 export type CatsUpdateInput = {
@@ -285,6 +299,7 @@ export type CatsUpdateInput = {
   url_imagem?: Prisma.StringFieldUpdateOperationsInput | string
   char_numero?: Prisma.IntFieldUpdateOperationsInput | number
   url_adocao?: Prisma.StringFieldUpdateOperationsInput | string
+  data_jogo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type CatsUncheckedUpdateInput = {
@@ -293,6 +308,7 @@ export type CatsUncheckedUpdateInput = {
   url_imagem?: Prisma.StringFieldUpdateOperationsInput | string
   char_numero?: Prisma.IntFieldUpdateOperationsInput | number
   url_adocao?: Prisma.StringFieldUpdateOperationsInput | string
+  data_jogo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type CatsCreateManyInput = {
@@ -301,6 +317,7 @@ export type CatsCreateManyInput = {
   url_imagem: string
   char_numero: number
   url_adocao: string
+  data_jogo?: Date | string | null
 }
 
 export type CatsUpdateManyMutationInput = {
@@ -308,6 +325,7 @@ export type CatsUpdateManyMutationInput = {
   url_imagem?: Prisma.StringFieldUpdateOperationsInput | string
   char_numero?: Prisma.IntFieldUpdateOperationsInput | number
   url_adocao?: Prisma.StringFieldUpdateOperationsInput | string
+  data_jogo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type CatsUncheckedUpdateManyInput = {
@@ -316,6 +334,7 @@ export type CatsUncheckedUpdateManyInput = {
   url_imagem?: Prisma.StringFieldUpdateOperationsInput | string
   char_numero?: Prisma.IntFieldUpdateOperationsInput | number
   url_adocao?: Prisma.StringFieldUpdateOperationsInput | string
+  data_jogo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type CatsCountOrderByAggregateInput = {
@@ -324,6 +343,7 @@ export type CatsCountOrderByAggregateInput = {
   url_imagem?: Prisma.SortOrder
   char_numero?: Prisma.SortOrder
   url_adocao?: Prisma.SortOrder
+  data_jogo?: Prisma.SortOrder
 }
 
 export type CatsAvgOrderByAggregateInput = {
@@ -337,6 +357,7 @@ export type CatsMaxOrderByAggregateInput = {
   url_imagem?: Prisma.SortOrder
   char_numero?: Prisma.SortOrder
   url_adocao?: Prisma.SortOrder
+  data_jogo?: Prisma.SortOrder
 }
 
 export type CatsMinOrderByAggregateInput = {
@@ -345,6 +366,7 @@ export type CatsMinOrderByAggregateInput = {
   url_imagem?: Prisma.SortOrder
   char_numero?: Prisma.SortOrder
   url_adocao?: Prisma.SortOrder
+  data_jogo?: Prisma.SortOrder
 }
 
 export type CatsSumOrderByAggregateInput = {
@@ -364,6 +386,10 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
 
 
 export type CatsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -372,6 +398,7 @@ export type CatsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   url_imagem?: boolean
   char_numero?: boolean
   url_adocao?: boolean
+  data_jogo?: boolean
 }, ExtArgs["result"]["cats"]>
 
 export type CatsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -380,6 +407,7 @@ export type CatsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   url_imagem?: boolean
   char_numero?: boolean
   url_adocao?: boolean
+  data_jogo?: boolean
 }, ExtArgs["result"]["cats"]>
 
 export type CatsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -388,6 +416,7 @@ export type CatsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   url_imagem?: boolean
   char_numero?: boolean
   url_adocao?: boolean
+  data_jogo?: boolean
 }, ExtArgs["result"]["cats"]>
 
 export type CatsSelectScalar = {
@@ -396,9 +425,10 @@ export type CatsSelectScalar = {
   url_imagem?: boolean
   char_numero?: boolean
   url_adocao?: boolean
+  data_jogo?: boolean
 }
 
-export type CatsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "url_imagem" | "char_numero" | "url_adocao", ExtArgs["result"]["cats"]>
+export type CatsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "url_imagem" | "char_numero" | "url_adocao" | "data_jogo", ExtArgs["result"]["cats"]>
 
 export type $CatsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Cats"
@@ -409,6 +439,7 @@ export type $CatsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     url_imagem: string
     char_numero: number
     url_adocao: string
+    data_jogo: Date | null
   }, ExtArgs["result"]["cats"]>
   composites: {}
 }
@@ -837,6 +868,7 @@ export interface CatsFieldRefs {
   readonly url_imagem: Prisma.FieldRef<"Cats", 'String'>
   readonly char_numero: Prisma.FieldRef<"Cats", 'Int'>
   readonly url_adocao: Prisma.FieldRef<"Cats", 'String'>
+  readonly data_jogo: Prisma.FieldRef<"Cats", 'DateTime'>
 }
     
 

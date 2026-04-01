@@ -1,0 +1,26 @@
+name: Scraping semanal de gatos
+
+on:
+  schedule:
+    # Todo domingo às 3h da manhã (UTC)
+    - cron: '0 3 * * 0'
+  workflow_dispatch: # Permite rodar manualmente pelo GitHub
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar Puppeteer
+        run: npm install puppeteer
+
+      - name: Executar scraping e sync
+        env:
+          API_URL: ${{ secrets.API_URL }}
+          SCRAPING_API_KEY: ${{ secrets.SCRAPING_API_KEY }}
+        run: node scripts/scrape.mjs

@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.2.0",
   "engineVersion": "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Cats {\n  id          Int    @id @default(autoincrement())\n  nome        String @unique\n  url_imagem  String\n  char_numero Int\n  url_adocao  String\n}\n",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Cats {\n  id          Int       @id @default(autoincrement())\n  nome        String    @unique\n  url_imagem  String\n  char_numero Int\n  url_adocao  String\n  data_jogo   DateTime? @unique\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Cats\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"url_imagem\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"char_numero\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"url_adocao\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Cats\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"url_imagem\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"char_numero\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"url_adocao\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"data_jogo\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')

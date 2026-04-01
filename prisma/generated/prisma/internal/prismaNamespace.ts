@@ -522,7 +522,8 @@ export const CatsScalarFieldEnum = {
   nome: 'nome',
   url_imagem: 'url_imagem',
   char_numero: 'char_numero',
-  url_adocao: 'url_adocao'
+  url_adocao: 'url_adocao',
+  data_jogo: 'data_jogo'
 } as const
 
 export type CatsScalarFieldEnum = (typeof CatsScalarFieldEnum)[keyof typeof CatsScalarFieldEnum]
@@ -542,6 +543,14 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 
@@ -575,6 +584,20 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
