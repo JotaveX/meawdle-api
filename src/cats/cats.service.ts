@@ -52,24 +52,23 @@ export class CatsService {
   }
 
   async getAvailableDates() {
-    const key = 'availableDates';
-    const cachedDates = await this.cache.get(key);
+    const today = new Date();
+    today.setUTCHours(0, 0, 0, 0);
+    const key = `availableDates:${today.toISOString().split('T')[0]}`;
+
+    const cachedDates = await this.cache.get<string[]>(key);
     if (cachedDates) return cachedDates;
 
     const cats = await this.prisma.cats.findMany({
-      where: { data_jogo: { not: null } },
+      where: { data_jogo: { not: null, lte: today } },
       select: { data_jogo: true },
       orderBy: { data_jogo: 'asc' },
     });
 
-    await this.cache.set(key, cats);
-
-    const today = new Date();
-    today.setUTCHours(0, 0, 0, 0);
-
-    // Retorna apenas datas até hoje (não revelar gatos futuros)
-    return cats
-      .filter(c => c.data_jogo && c.data_jogo <= today)
+    const dates = cats
       .map(c => c.data_jogo!.toISOString().split('T')[0]);
+
+    await this.cache.set(key, dates);
+    return dates;
   }
 }
