@@ -15,7 +15,7 @@ export class ScrapingService {
   constructor(private prisma: PrismaService) {}
 
   async syncCatsToDatabase(cats: CatJson[]): Promise<{ inserted: number; updated: number; total: number }> {
-    const baseDate = new Date('2024-01-01T00:00:00.000Z');
+    const baseDate = new Date('2026-01-01T00:00:00.000Z');
 
     const lastCat = await this.prisma.cats.findFirst({
       where: { data_jogo: { not: null } },
