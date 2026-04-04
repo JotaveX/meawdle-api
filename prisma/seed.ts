@@ -21,7 +21,7 @@ interface CatJson {
 const cats: CatJson[] = require('./gatos.json');
 
 async function main() {
-    const baseDate = new Date('2024-01-01T00:00:00.000Z');
+    const baseDate = new Date('2026-01-01T00:00:00.000Z');
 
     // Busca o último data_jogo atribuído para continuar a sequência
     const lastCat = await prisma.cats.findFirst({
