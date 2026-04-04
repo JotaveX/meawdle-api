@@ -31,7 +31,10 @@ export class ScrapingService {
     let inserted = 0;
     let updated = 0;
 
-    for (const cat of cats) {
+    const validCats = cats.filter(cat => !cat.nome.includes(' '));
+    this.logger.log(`Filtrando ${cats.length - validCats.length} gatos com espaço no nome.`);
+
+    for (const cat of validCats) {
       const existing = await this.prisma.cats.findUnique({
         where: { nome: cat.nome },
       });
@@ -65,6 +68,6 @@ export class ScrapingService {
     }
 
     this.logger.log(`Sync concluído: ${inserted} novos, ${updated} atualizados de ${cats.length} total.`);
-    return { inserted, updated, total: cats.length };
+    return { inserted, updated, total: validCats.length };
   }
 }

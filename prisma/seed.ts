@@ -36,8 +36,15 @@ async function main() {
     }
 
     let inserted = 0;
+    let skipped = 0;
     for (let i = 0; i < cats.length; i++) {
         const cat = cats[i];
+
+        if (cat.nome.includes(' ')) {
+            skipped++;
+            continue;
+        }
+
         const existing = await prisma.cats.findUnique({ where: { nome: cat.nome } });
 
         if (!existing) {
@@ -78,7 +85,7 @@ async function main() {
         inserted++;
     }
 
-    console.log(`Seed concluído: ${inserted} gatos inseridos/atualizados. Total de dias cobertos: ${nextDayOffset}`);
+    console.log(`Seed concluído: ${inserted} gatos inseridos/atualizados, ${skipped} ignorados (nome com espaço). Total de dias cobertos: ${nextDayOffset}`);
 }
 
 main()
